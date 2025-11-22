@@ -1,17 +1,26 @@
+import os
+import sys
 import logging
-import os 
 
-from from_root import from_root
-from datetime import datetime
+logging_str = "[ %(asctime)s ] %(name)s - %(levelname)s - %(filename)s:%(lineno)d - %(message)s"
+log_dir = "log"
+log_filepath = os.path.join(log_dir, "running_logs.log")
 
-LOG_FILE = f"{datetime.now().strftime('%m_%d_%Y_%H_%M_%S')}.log"
-
-log_dir = "logs"
-logs_path = os.path.join(from_root(), log_dir, LOG_FILE)
 os.makedirs(log_dir, exist_ok=True)
 
-logging.basicConfig(
-    filename=logs_path,
-    format="[ %(asctime)s ] %(name)s - %(levelname)s - %(message)s",
-    level=logging.DEBUG,
-)
+logger = logging.getLogger("oil_retail")
+logger.setLevel(logging.INFO)
+
+formatter = logging.Formatter(logging_str)
+
+# Avoid adding handlers multiple times
+if not logger.handlers:
+    # File handler
+    file_handler = logging.FileHandler(log_filepath)
+    file_handler.setFormatter(formatter)
+    logger.addHandler(file_handler)
+
+    # Stream handler
+    stream_handler = logging.StreamHandler(sys.stdout)
+    stream_handler.setFormatter(formatter)
+    logger.addHandler(stream_handler)
