@@ -1,3 +1,5 @@
+# To run this sh template.sh
+
 project_name="oil_retail"
 
 # Creating Directories
