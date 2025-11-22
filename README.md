@@ -1,1 +1,3 @@
 # Oil_Retail
+
+I have use -e . in the end to setup my local package you can see oil_retail is my local package because inside oil_retail we are having so many components now lets say i want to import something from oil_retail so we import like this from oil_retail.configuration import data_ingestion we can only import if it is set as a local package -e . it will look particular file called setup.py inside setup.py we have to give little details it is important to do if you wanna imort anything from oil_retail we can check using pip list if oil_retail is insatll as a local package or not 
