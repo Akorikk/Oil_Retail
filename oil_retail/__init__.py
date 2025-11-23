@@ -13,7 +13,6 @@ logger.setLevel(logging.INFO)
 
 formatter = logging.Formatter(logging_str)
 
-# Avoid adding handlers multiple times
 if not logger.handlers:
     # File handler
     file_handler = logging.FileHandler(log_filepath)
