@@ -31,3 +31,20 @@ it will give you unexpected result with no error Even though a should be an int,
 8. Update the main.py
 9. Update the app.py
 
+so first we have to update config.yaml inside config.yaml fils we have to write some external variable  so firts variable would be data ingestion these are the variable we have to write 
+artifacts_root: artifacts
+data_ingestion:
+  root_dir: artifacts/data_ingestion
+  source_url: 
+  local_data_file: artifacts/data_ingestion/data.zip
+  unzip_dir: artifacts/data_ingestion
+so i am creating folder name artifacts inside artifacts folder it will ingest my data by the given source url the we have to update our entity so entity is a return type of a function 
+this is what we had to do in entity @dataclass(frozen=True)
+class DataIngestionConfig:
+    root_dir: path
+    source_url: str
+    local_data_file: Path
+    unzip_dir: Path
+whatever you have seen in config.yaml i have defined here in entity and i have use frozen=True that means whatever variable i have defined here apart from thta if you want to define any other variable you cant because its already frozen 
+so same workflow we gonna use for data validation data transformation etc for example you want to chanke the url you can change the source_url 
+
