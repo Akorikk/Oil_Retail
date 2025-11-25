@@ -3,6 +3,8 @@ from oil_retail.pipeline.stage01_data_ingestion import DataIngestionTrainingPipe
 from oil_retail.pipeline.stage02_data_validation import DataValidationTrainingPipeline
 from oil_retail.pipeline.stage03_data_transformation import DataTransformationTrainingPipeline
 from oil_retail.pipeline.stage04_model_trainer import ModelTrainerTrainingPipeline
+from oil_retail.pipeline.stage05_model_monitoring import ModelMonitoringPipeline
+
 
 STAGE_NAME = "data ingestion"
 try:
@@ -45,3 +47,13 @@ try:
 except Exception as e:
     logger.error(e)
     raise e
+
+
+if __name__ == "__main__":
+    try:
+        model_monitoring = ModelMonitoringPipeline()
+        model_monitoring.main()
+
+        logger.info(">>>>>>> Model Monitoring Stage Completed <<<<<<<<")
+    except Exception as e:
+        raise e

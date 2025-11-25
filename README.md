@@ -50,5 +50,6 @@ so same workflow we gonna use for data validation data transformation etc for ex
 
 next is configuration this configuration will return all the configuration like root dir source url etc so inside constant i have put all the yaml file path and i am reading the file fron constant 
 
-use mlflow ui --backend-store-uri mlruns in command to see ui 
-
+I used MLflow because this project requires a real MLOps setup, not just a basic model script. MLflow helps with MLflow ensures experiment tracking, reproducibility, and production-ready model management and I used Evidently AI for continuous monitoring of the ML system. Evidently ensures the model stays healthy in production by detecting data drift and performance issues.
+use mlflow ui --backend-store-uri mlruns in command to see ui and for evidentaly ui runn the main.py it will runn the end to end pipeline and create artifact folder go to the folder then go to model_monitoring you can see two file data_drift_json and data_drift_dashboard.html run html to see ui 
+ 

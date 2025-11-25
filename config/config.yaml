@@ -26,3 +26,10 @@ model_trainer:
   test_data: artifacts/data_transformation/test.csv
   model_path: artifacts/model_trainer/model.joblib
 
+
+model_monitoring:
+  root_dir: artifacts/model_monitoring
+  reference_data: artifacts/data_transformation/train.csv
+  current_data: artifacts/data_transformation/test.csv
+  drift_report: artifacts/model_monitoring/data_drift_report.json
+  drift_dashboard: artifacts/model_monitoring/data_drift_dashboard.html

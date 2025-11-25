@@ -50,3 +50,12 @@ class ModelTrainerConfig:
 # mlflow settings
     mlflow_tracking_uri: str
     mlflow_experiment_name: str
+
+
+@dataclass(frozen=True)
+class ModelMonitoringConfig:
+    root_dir: Path
+    reference_data: Path
+    current_data: Path
+    drift_report: Path
+    drift_dashboard: Path

@@ -3,7 +3,8 @@ from oil_retail.utils.common import read_yaml, create_directories
 from oil_retail.entity.config_entity import (DataIngestionConfig, 
                                              DataValidationConfig,
                                              DataTransformationConfig,
-                                             ModelTrainerConfig)
+                                             ModelTrainerConfig,
+                                             ModelMonitoringConfig)
 
 class ConfigurationManager:
     def __init__(
@@ -101,4 +102,19 @@ class ConfigurationManager:
             mlflow_experiment_name=mlflow_cfg.experiment_name
         )
 
+    def get_model_monitoring_config(self) -> ModelMonitoringConfig:
+
+        config = self.config.model_monitoring
+
+
+        create_directories([config.root_dir])
+        monitoring_config = ModelMonitoringConfig(
+        root_dir=config.root_dir,
+        reference_data=config.reference_data,
+        current_data=config.current_data,
+        drift_report=config.drift_report,
+        drift_dashboard=config.drift_dashboard
+    )
+        
+        return monitoring_config
 
