@@ -1,0 +1,51 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    # Checkout code
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Setup Python
+    - name: Setup Python 3.9
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.9"
+
+    # Install dependencies
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    # Run pipeline
+    - name: Run ML pipeline
+      run: |
+        python main.py
+
+    # Build Docker image
+    - name: Build Docker image
+      run: docker build -t oil-retail .
+
+    # Login to DockerHub (needs secrets)
+    - name: Docker Login
+      uses: docker/login-action@v2
+      with:
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    # Push image
+    - name: Push Docker image
+      run: |
+        docker tag oil-retail ${{ secrets.DOCKER_USERNAME }}/oil-retail:latest
+        docker push ${{ secrets.DOCKER_USERNAME }}/oil-retail:latest
