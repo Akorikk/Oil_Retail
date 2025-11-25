@@ -50,3 +50,5 @@ so same workflow we gonna use for data validation data transformation etc for ex
 
 next is configuration this configuration will return all the configuration like root dir source url etc so inside constant i have put all the yaml file path and i am reading the file fron constant 
 
+use mlflow ui --backend-store-uri mlruns in command to see ui 
+
