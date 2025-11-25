@@ -48,3 +48,5 @@ class DataIngestionConfig:
 whatever you have seen in config.yaml i have defined here in entity and i have use frozen=True that means whatever variable i have defined here apart from thta if you want to define any other variable you cant because its already frozen 
 so same workflow we gonna use for data validation data transformation etc for example you want to chanke the url you can change the source_url 
 
+next is configuration this configuration will return all the configuration like root dir source url etc so inside constant i have put all the yaml file path and i am reading the file fron constant 
+
