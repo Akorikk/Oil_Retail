@@ -10,3 +10,11 @@ data_validation:
   root_dir: artifacts/data_validation
   unzip_data_dir: artifacts\data_ingestion\oil_retail_history.csv
   STATUS_FILE: artifacts/data_validation/status.txt
+
+
+data_transformation:
+  root_dir: artifacts/data_transformation
+  data_path: artifacts/data_ingestion/oil_retail_history.csv
+  processed_data: artifacts/data_transformation/processed.csv
+  train_data: artifacts/data_transformation/train.csv
+  test_data: artifacts/data_transformation/test.csv
