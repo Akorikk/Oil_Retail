@@ -2,6 +2,7 @@ from oil_retail import logger
 from oil_retail.pipeline.stage01_data_ingestion import DataIngestionTrainingPipeline
 from oil_retail.pipeline.stage02_data_validation import DataValidationTrainingPipeline
 from oil_retail.pipeline.stage03_data_transformation import DataTransformationTrainingPipeline
+from oil_retail.pipeline.stage04_model_trainer import ModelTrainerTrainingPipeline
 
 STAGE_NAME = "data ingestion"
 try:
@@ -33,4 +34,14 @@ try:
     obj.main()
     logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
 except Exception as e:
+    raise e
+
+STAGE_name =  "Model trainer"
+try:
+    logger.info(f">>>>>> stage {STAGE_NAME} started <<<<<<")
+    model_trainer = ModelTrainerTrainingPipeline()
+    model_trainer.main()
+    logger.info(f">>>>>> stage {STAGE_NAME} completed <<<<<<\n\nx==========x")
+except Exception as e:
+    logger.error(e)
     raise e

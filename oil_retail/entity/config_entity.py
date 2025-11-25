@@ -24,3 +24,13 @@ class DataTransformationConfig:
     processed_data: Path
     train_data: Path
     test_data: Path
+
+
+@dataclass(frozen=True)
+class ModelTrainerConfig:
+    root_dir: Path
+    train_data: Path
+    test_data: Path
+    model_path: Path
+    params: dict  
+
