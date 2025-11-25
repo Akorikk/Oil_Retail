@@ -1,1 +1,12 @@
-key: val
+COLUMNS:
+  date: object 
+  price: float64
+  cost: float64
+  comp1_price: float64
+  comp2_price: float64
+  comp3_price: float64
+  volume: int64
+  
+
+TARGET_COLUMN:
+  volume: int64
