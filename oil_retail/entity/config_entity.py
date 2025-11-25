@@ -26,11 +26,27 @@ class DataTransformationConfig:
     test_data: Path
 
 
+"""@dataclass(frozen=True)
+class ModelTrainerConfig:
+    root_dir: Path
+    train_data: Path
+    test_data: Path
+    model_path: Path
+    params: dict  """
+
+
 @dataclass(frozen=True)
 class ModelTrainerConfig:
     root_dir: Path
     train_data: Path
     test_data: Path
     model_path: Path
-    params: dict  
-
+# params.yaml values
+    n_estimators: int
+    learning_rate: float
+    max_depth: int
+    colsample_bytree: float
+    random_state: int
+# mlflow settings
+    mlflow_tracking_uri: str
+    mlflow_experiment_name: str

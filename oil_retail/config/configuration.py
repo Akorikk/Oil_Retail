@@ -66,7 +66,7 @@ class ConfigurationManager:
         return data_transformation_config
     
 
-    def get_model_trainer_config(self) -> ModelTrainerConfig:
+    """def get_model_trainer_config(self) -> ModelTrainerConfig:
         config = self.config.model_trainer
         params = self.params.model_trainer  
 
@@ -79,6 +79,26 @@ class ConfigurationManager:
             test_data=config.test_data,
             model_path=config.model_path,
             params=params    
-            )
+            )"""
+    def get_model_trainer_config(self) -> ModelTrainerConfig:
+        config = self.config.model_trainer
+        params = self.params.model_trainer
+        mlflow_cfg = self.params.mlflow
+
+        create_directories([config.root_dir])
+
+        return ModelTrainerConfig(
+            root_dir=config.root_dir,
+            train_data=config.train_data,
+            test_data=config.test_data,
+            model_path=config.model_path,
+            n_estimators=params.n_estimators,
+            learning_rate=params.learning_rate,
+            max_depth=params.max_depth,
+            colsample_bytree=params.colsample_bytree,
+            random_state=params.random_state,
+            mlflow_tracking_uri=mlflow_cfg.tracking_uri,
+            mlflow_experiment_name=mlflow_cfg.experiment_name
+        )
 
 
